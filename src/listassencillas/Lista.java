@@ -18,9 +18,7 @@ public class Lista {
  Nodo cab;
     
     
-    public Lista{
-        cab=null;
-    }
+   
     
     public Nodo getBuscarId(String iDE){
         if(cab==null)
@@ -306,6 +304,64 @@ public class Lista {
             }
         }
     }
-    
+    public void getEstudiantesMdadPrQuin() {
+    if (cab == null) {
+        JOptionPane.showMessageDialog(null, "La lista está vacía");
+        return;
+    }
+
+    Nodo p = cab;
+    Nodo MayorP = null;
+    Nodo    MayorQ= null;
+
+    while (p != null) {
+        if (p.getCurso() == 1) {
+            if (MayorP== null || p.getEdad() > MayorP.getEdad()) {
+                MayorP = p;
+            }
+        } else if (p.getCurso() == 5) {
+            if (MayorQ == null || p.getEdad() > MayorQ.getEdad()) {
+                MayorQ = p;
+            }
+        }
+        p = p.sig;
+    }
+
+    if (MayorP != null) {
+        JOptionPane.showMessageDialog(null, "El estudiante de mayor edad en el primer curso es: " + MayorP.getNombre() + "\nSexo: " + MayorP.getSexo());
+    } else {
+        JOptionPane.showMessageDialog(null, "No hay estudiantes en el primer curso");
+    }
+
+    if (MayorQ != null) {
+        JOptionPane.showMessageDialog(null, "El estudiante de mayor edad en el quinto curso es:" + MayorQ.getNombre() + "\nSexo: " + MayorQ.getSexo());
+    } else {
+        JOptionPane.showMessageDialog(null, "No hay estudiantes en el quinto curso");
+    }
+}
+    public void getInformeGPrim() {
+    if (cab == null) {
+        JOptionPane.showMessageDialog(null, "La lista está vacía");
+        return;
+    }
+
+    Nodo p = cab;
+    int cantidadMujeres = 0;
+    int cantidadHombres = 0;
+
+    while (p != null) {
+        if (p.getCurso() == 1) {
+            if (p.getSexo().equalsIgnoreCase("F")) {
+                cantidadMujeres++;
+            } else if (p.getSexo().equalsIgnoreCase("M")) {
+                cantidadHombres++;
+            }
+        }
+        p = p.sig;
+    }
+
+    JOptionPane.showMessageDialog(null, "Informe de primer curso:\nEL total Mujeres es: " + cantidadMujeres + "\nEl total Hombres es: " + cantidadHombres);
+}
+
     
 }
