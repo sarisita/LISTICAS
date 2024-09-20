@@ -167,6 +167,56 @@ public class Lista {
             return p;
         }
     }
+    public void setAddMedio(
+        JTextField JtfID,
+        JTextField Jtfnomb,
+        JTextField JtfSexo,
+        JTextField JtfEdad,
+        JTextField JtfCurso,
+        JTextField JtfAcudiente,
+        JTextField JtTlfAcudiente,
+        int posicion) {
+    
+    // Crear el nuevo nodo con los datos de los JTextField
+    Nodo info = getCrearNodo(
+            JtfID,
+            Jtfnomb,
+            JtfSexo,
+            JtfEdad,
+            JtfCurso,
+            JtfAcudiente,
+            JtTlfAcudiente
+    );
+
+    if (info != null) {
+        // Si la lista está vacía o la posición es 0, insertar al inicio
+        if (cab == null || posicion == 0) {
+            setAddInicio(JtfID, Jtfnomb, JtfSexo, JtfEdad, JtfCurso, JtfAcudiente, JtTlfAcudiente);
+        } else {
+            // Recorremos la lista hasta la posición anterior a donde queremos insertar
+            Nodo temp = cab;
+            int contador = 0;
+
+            while (temp != null && contador < posicion - 1) {
+                temp = temp.sig;
+                contador++;
+            }
+
+            // Si alcanzamos una posición válida, insertamos el nodo en medio
+            if (temp != null) {
+                info.sig = temp.sig;
+                temp.sig = info;
+                JOptionPane.showMessageDialog(null,
+                        "Se ha registrado un nuevo elemento en la posición " + posicion + ".");
+            } else {
+                JOptionPane.showMessageDialog(null, "La posición es mayor al tamaño de la lista.");
+            }
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Error al crear el nodo.");
+    }
+}
+
 
     public void setAddFinal(
             JTextField JtfID,
@@ -319,34 +369,35 @@ public class Lista {
             JOptionPane.showMessageDialog(null, "No hay estudiantes en el quinto curso");
         }
     }
-    
-    public void getMostrarNomb(String nom){
+
+    public void getMostrarNomb(String nom) {
         if (cab == null) {
-           JOptionPane.showMessageDialog(null, "No hay Elementos en la lista");
+            JOptionPane.showMessageDialog(null, "No hay Elementos en la lista");
         } else {
             Nodo p = getBuscarNomb(nom);
-            if(p==null){
+            if (p == null) {
                 JOptionPane.showMessageDialog(null, "No Existe Este Estudiante");
-            } else{
+            } else {
                 p.mostrarEst();
                 p.mostrarAcu();
             }
-            }
-    
+        }
+
     }
-     public void getMostrarId(String id){
+
+    public void getMostrarId(String id) {
         if (cab == null) {
-           JOptionPane.showMessageDialog(null, "No hay Elementos en la lista");
+            JOptionPane.showMessageDialog(null, "No hay Elementos en la lista");
         } else {
             Nodo p = getBuscarId(id);
-            if(p==null){
+            if (p == null) {
                 JOptionPane.showMessageDialog(null, "No Existe Este Estudiante");
-            } else{
+            } else {
                 p.mostrarEst();
                 p.mostrarAcu();
             }
-            }
-    
+        }
+
     }
 
     public void getInformeGPrim() {

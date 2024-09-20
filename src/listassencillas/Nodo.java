@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
  * @author SARIC
  */
 public class Nodo {
-     private String iD;
+
+    private String iD;
     private String nombre;
     private String sexo;
     private int edad;
@@ -28,7 +29,7 @@ public class Nodo {
         this.curso = curso;
         this.Acudiente = Acudiente;
         this.telefonoAcudiente = telefonoAcudiente;
-        sig=null;
+        sig = null;
     }
 
     public String getiD() {
@@ -94,26 +95,19 @@ public class Nodo {
     public void setSig(Nodo sig) {
         this.sig = sig;
     }
-    public void mostrarEst(){
-    String msg="ID : "+ iD+"\n"
-            + "Nombre : "+nombre+"\n"
-            + "Sexo : "+sexo+"\n"
-            + "Edad : "+edad+"\n"
-            + "Curso: "+curso+"\n";
-    JOptionPane.showMessageDialog(null,msg);
+
+    public void mostrarEst() {
+        String msg = "ID : " + iD + "\n"
+                + "Nombre : " + nombre + "\n"
+                + "Sexo : " + sexo + "\n"
+                + "Edad : " + edad + "\n"
+                + "Curso: " + curso + "\n";
+        JOptionPane.showMessageDialog(null, msg);
     }
-    public void mostrarAcu(){
-    String msg= "Nombre de Acudiente: "+ Acudiente+"\nTelefono Acudiente: "+telefonoAcudiente;
-    JOptionPane.showMessageDialog(null,msg);
+
+    public void mostrarAcu() {
+        String msg = "Nombre de Acudiente: " + Acudiente + "\nTelefono Acudiente: " + telefonoAcudiente;
+        JOptionPane.showMessageDialog(null, msg);
     }
-    
-    
-    
-    
-    
-    
-    
+
 }
-
-    
-
